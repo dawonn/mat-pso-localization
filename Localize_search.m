@@ -39,10 +39,15 @@ for datasetnum = 1:9
     clf
     [~, idx] = max(fit(:));
     [ix, iy, ir] = ind2sub(size(fit), idx);
-    mesh(fit(:, :, ir))
+    %mesh(fit(:, :, ir))
+    for i = 1:size(fit,3)
+        contour(fit(:,:,i));
+        hold on
+    end
+    contour(fit(:,:,ir));
     axis xy
     print(fig2, [output_dir '/laserscan-' num2str(datasetnum) '-fit1.png'], '-dpng', '-r200')
-    
+
     % Matlab non-linear optimization toolbox
     tic
     pose = LaserScan_gradiant(map, laserscan, pose);
