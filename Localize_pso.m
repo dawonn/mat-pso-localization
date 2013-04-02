@@ -29,14 +29,12 @@ for datasetnum = 1:9
 
     % PSO Search
     tic
-        lin = 0.25;
-        rot = pi/8;
-        [pose fit] = LaserScan_pso(map, laserscan, lin, rot);
+        [pose fit] = LaserScan_pso(map, laserscan);
     elapsed_time1 = toc
         
     % Matlab non-linear optimization toolbox (Optional)
     tic
-    pose = LaserScan_gradiant(map, laserscan, pose);
+        pose = LaserScan_gradiant(map, laserscan, pose);
     elapsed_time2 = toc      
     
     % Plot Final Result
