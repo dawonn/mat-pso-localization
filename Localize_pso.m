@@ -29,7 +29,7 @@ for datasetnum = 1:9
 
     % PSO Search
     tic
-        [pose fit] = LaserScan_pso(map, laserscan);
+        pose = LaserScan_pso(map, laserscan);
     elapsed_time1 = toc
         
     % Matlab non-linear optimization toolbox (Optional)
