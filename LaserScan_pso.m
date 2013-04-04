@@ -12,9 +12,9 @@ function pose = LaserScan_pso (map, laserscan)
     % Parameters
     population_size = 300;
     v_max = 0.1;
-    c1   = 0.2;
-    c2   = 0.1;
-    w    = 1.5;
+    c1    = 0.2;
+    c2    = 0.1;
+    w     = 1.5;
     
     % Inital particle population
     clear x
@@ -36,11 +36,9 @@ function pose = LaserScan_pso (map, laserscan)
     local_best_x       = x;
     
     % Track the best fitness seen by the swarm
-    [global_fitness, idx] = max(local_best_fitness);
+    [~, idx] = max(local_best_fitness);
     global_best = x(idx,:);
     
-    % PSO Loop  
-    i = 1;
     
     % Loop until no better estimate is found in # ittereations
     stuck = 0;
@@ -82,7 +80,7 @@ function pose = LaserScan_pso (map, laserscan)
                             + x(:,3)             .*     fitness_better ;
               
         % Locate the global best estimate
-        [global_fitness, idx] = max(local_best_fitness);
+        [~, idx] = max(local_best_fitness);
         global_best = local_best_x(idx,:);
 
         % Update Velocities
@@ -94,7 +92,7 @@ function pose = LaserScan_pso (map, laserscan)
     end
         
     % Return the best pose estimate
-    pose = global_best
+    pose = global_best;
 
 end
 
